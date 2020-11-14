@@ -1,0 +1,57 @@
+---
+title: "week_6_code_along"
+author: "Danielle Sclafani"
+date: "11/14/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(palmerpenguins)
+library(ggpubr)
+library(broom)
+```
+
+##. Part 2: A rank-based test example (Mann Whitney U)
+
+```{r}
+set.seed(1414)
+gp_1 <- sample.int(20, size = 15, replace = TRUE)
+
+set.seed(1424)
+gp_2 <- sample.int(30, size = 15, replace = TRUE)
+```
+
+Is there evidence for a significant difference in ranks (medians) between the populations from which gp_1 and gp_2 were drawn?
+
+```{r}
+hist(gp_1)
+```
+
+```{r}
+hist(gp_2)
+```
+
+> why would we choose a rank test?
+> 1. not clearly normally distributed from exploratory histograms
+> 2. somewhat of a small sample size
+> 3. i have decided that ranks, or medians, are a more valuable metric to compare for these data
+
+## Mann-Whitney U test
+
+```{r}
+my_mwu <- wilcox.test(gp_1, gp_2)
+```
+
+> if the null hypothesis is true, there is a probability of 0.43 that we could have found median values at least as different as ours by chance. We do not reject the Ho in this case.
+
+
+## Part 3. Simple Linear Regression
+
+```{r}
+
+```
+
+
+
